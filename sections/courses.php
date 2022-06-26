@@ -40,6 +40,8 @@ if ($action != '') {
             $query->execute();
 
             $course = $query->fetch(PDO::FETCH_ASSOC);
+            // print_r($course);
+            // $course_name = $course['course_name'];
             break;
     }
 }

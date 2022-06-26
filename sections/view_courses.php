@@ -16,11 +16,11 @@
                                 <div class="mb-3">
 
                                     <label for="" class="form-label">ID</label>
-                                    <input type="text" class="form-control" name="id" id="id" aria-describedby="helpId" placeholder="ID">
+                                    <input type="text" class="form-control" name="id" value="<?php echo $id; ?>" id="id" aria-describedby="helpId" placeholder="ID">
                                 </div>
                                 <div class="mb-3">
                                     <label for="course_name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="course_name" id="course_name" aria-describedby="helpId" placeholder="Name of the course">
+                                    <input type="text" class="form-control" name="course_name" value="<?php echo $course_name; ?>" id="course_name" aria-describedby="helpId" placeholder="Name of the course">
                                 </div>
                                 <div class="btn-group" role="group" aria-label="">
                                     <button type="submit" name="action" value="add" class="btn btn-success">Add</button>
@@ -48,8 +48,9 @@
                                     <td><?php echo $course['course_name']; ?></td>
                                     <td>
                                         <form action="" method="POST">
-                                           <input type="hidden" name="id" id="id" value="<?php echo $course['id']; ?>"/> 
-                                           <input type="submit" name="action" value="Select" class="btn btn-info" >
+                                            <input type="hidden" name="id" id="id" value="<?php echo $course['id']; ?>" />
+                                            <input type="hidden" name="course_name" id="course_name" value="<?php echo $course['course_name']; ?>" />
+                                            <input type="submit" name="action" value="Select" class="btn btn-info">
                                         </form>
                                     </td>
                                 </tr>
