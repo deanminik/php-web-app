@@ -1,4 +1,5 @@
 <?php include("../templates/header.php"); ?>
+<?php include("../sections/courses.php"); ?>
 
 <div class="container">
     <div class="row">
