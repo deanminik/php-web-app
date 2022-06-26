@@ -14,3 +14,11 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" href="index.php">Home <span class="visually-hidden">(current)</span></a>
+            <a class="nav-item nav-link" href="view_students.php">Students</a>
+            <a class="nav-item nav-link" href="view_courses.php">Courses</a>
+            <a class="nav-item nav-link" href="#">Sign out</a>
+        </div>
+    </nav>
