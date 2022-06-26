@@ -24,8 +24,12 @@ if ($action != '') {
             break;
 
         case 'edit':
-            $sql = "UPDATE courses SET course_name='$course_name' WHERE id=$id";
-            echo $sql;
+            $sql = "UPDATE courses SET course_name=:course_name WHERE id=:id";
+            $query = $bdconnectionBD->prepare($sql);
+            $query->bindParam(':id', $id);
+            $query->bindParam(':course_name', $course_name);
+            $query->execute();
+     
             break;
 
         case 'delete':
