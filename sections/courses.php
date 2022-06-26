@@ -29,8 +29,10 @@ if ($action != '') {
             break;
 
         case 'delete':
-            $sql = "DELETE FROM courses WHERE id=$id";
-            echo $sql;
+            $sql = "DELETE FROM courses WHERE id=:id";
+            $query = $bdconnectionBD->prepare($sql);
+            $query->bindParam(':id', $id);
+            $query->execute();
             break;
 
         case 'select':
