@@ -3,8 +3,6 @@
 include_once '../settings/bd.php';
 $bdconnectionBD = BD::createInstance();
 
-// print_r($_POST);
-
 
 
 $id = isset($_POST['id']) ? $_POST['id'] : '';
@@ -15,6 +13,7 @@ $courses = isset($_POST['courses']) ? $_POST['courses'] : '';
 
 $action = isset($_POST['action']) ? $_POST['action'] : '';
 
+// print_r($_POST['action']);
 
 
 if ($action != '') {
@@ -27,17 +26,30 @@ if ($action != '') {
             $query->execute();
 
             $idStudent = $bdconnectionBD->lastInsertId();
-          /**
-           * When we insert the student, we recover the id with this, $idStudent = $bdconnectionBD->lastInsertId();
-           * this will be useful to make the relationship the student with the courses 
-           */
+            /**
+             * When we insert the student, we recover the id with this, $idStudent = $bdconnectionBD->lastInsertId();
+             * this will be useful to make the relationship the student with the courses 
+             */
             foreach ($courses as $course) {
-              $sql = "INSERT INTO course_student (id, id_student, id_course) VALUES (NULL,:id_student,:id_course)";
-              $query=$bdconnectionBD->prepare($sql);
-              $query->bindParam(':id_student', $idStudent);//from the last student inserted $idStudent
-              $query->bindParam(':id_course', $course);
-              $query->execute();
+                $sql = "INSERT INTO course_student (id, id_student, id_course) VALUES (NULL,:id_student,:id_course)";
+                $query = $bdconnectionBD->prepare($sql);
+                $query->bindParam(':id_student', $idStudent); //from the last student inserted $idStudent
+                $query->bindParam(':id_course', $course);
+                $query->execute();
             }
+            break;
+
+        case 'Select':
+            // echo 'Press select';
+            // echo $id;
+            $sql = "SELECT * FROM students WHERE id=:id";
+            $query = $bdconnectionBD->prepare($sql);
+            $query->bindParam(':id', $id);
+            $query->execute();
+            $student = $query->fetch(PDO::FETCH_ASSOC);
+            // $id = $student['id'];
+            $name = $student['name'];
+            $Lastname = $student['Lastname'];
             break;
     }
 }
@@ -64,6 +76,5 @@ foreach ($students as $key => $student) {
 //here is to give al course to select in the select tag of the form
 $sql = "SELECT * FROM courses";
 $coursesList = $bdconnectionBD->query($sql);
-$courses=$coursesList->fetchAll();
+$courses = $coursesList->fetchAll();
 // var_dump($courses);
-

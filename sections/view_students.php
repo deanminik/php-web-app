@@ -16,25 +16,25 @@
                                 <div class="mb-3">
 
                                     <label for="" class="form-label">ID</label>
-                                    <input type="text" class="form-control" name="id" value="" id="id" aria-describedby="helpId" placeholder="ID">
+                                    <input type="text" class="form-control" name="id" value="<?php echo $id; ?>" id="id" aria-describedby="helpId" placeholder="ID">
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" value="" id="name" aria-describedby="helpId" placeholder="Name of the student">
+                                    <input type="text" class="form-control" name="name" value="<?php echo $name; ?>" id="name" aria-describedby="helpId" placeholder="Name of the student">
                                 </div>
                                 <div class="mb-3">
                                     <label for="Lastname" class="form-label">Lastname</label>
-                                    <input type="text" class="form-control" name="Lastname" value="" id="Lastname" aria-describedby="helpId" placeholder="Lastname of the student">
+                                    <input type="text" class="form-control" name="Lastname" value="<?php echo $Lastname; ?>" id="Lastname" aria-describedby="helpId" placeholder="Lastname of the student">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Courses</label>
                                     <select multiple class="form-control" name="courses[]" id="coursesList">
                                         <option>Select an option</option>
-                                        <?php foreach($courses as $course) { ?>
-                                        <option value="<?php echo $course['id'];?>"><?php echo $course['id'];?><?php echo $course['course_name'];?></option>
-                                       
-                                        <?php }?>
+                                        <?php foreach ($courses as $course) { ?>
+                                            <option value="<?php echo $course['id']; ?>"><?php echo $course['id']; ?><?php echo $course['course_name']; ?></option>
+
+                                        <?php } ?>
                                     </select>
                                 </div>
 
@@ -64,12 +64,12 @@
                                     <td>
                                         <?php echo $student['name']; ?>
                                         <?php echo $student['Lastname']; ?>
-                                        <br/>
-                                        <span><b>Courses List</b></span><br/>
+                                        <br />
+                                        <span><b>Courses List</b></span><br />
                                         <!-- <?php print_r($student["courses"]) ?> -->
                                         <?php
                                         foreach ($student["courses"] as $course) {
-                                            echo '<a href="#">'.$course['course_name']. '</a><br>';
+                                            echo '<a href="#">' . $course['course_name'] . '</a><br>';
                                         }
                                         ?>
                                     </td>
