@@ -28,11 +28,13 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Courses from the student</label>
+                                    <label for="" class="form-label">Courses</label>
                                     <select multiple class="form-control" name="courses[]" id="coursesList">
                                         <option>Select an option</option>
-                                        <option>Istanbul</option>
-                                        <option>Jakarta</option>
+                                        <?php foreach($courses as $course) { ?>
+                                        <option value="<?php echo $course['id'];?>"><?php echo $course['id'];?><?php echo $course['course_name'];?></option>
+                                       
+                                        <?php }?>
                                     </select>
                                 </div>
 
