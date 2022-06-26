@@ -46,7 +46,12 @@
                                 <tr>
                                     <td><?php echo $course['id']; ?></td>
                                     <td><?php echo $course['course_name']; ?></td>
-                                    <td>Select</td>
+                                    <td>
+                                        <form action="" method="POST">
+                                           <input type="hidden" name="id" id="id" value="<?php echo $course['id']; ?>"/> 
+                                           <input type="submit" name="action" value="Select" class="btn btn-info" >
+                                        </form>
+                                    </td>
                                 </tr>
                                 <tr>
                                 <?php } ?>

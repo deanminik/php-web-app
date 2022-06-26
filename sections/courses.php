@@ -33,8 +33,13 @@ if ($action != '') {
             echo $sql;
             break;
 
-        default:
-            # code...
+        case 'select':
+            $sql = "SELECT *FROM courses WHERE id=:id";
+            $query = $bdconnectionBD->prepare($sql);
+            $query->bindParam(':id', $id);
+            $query->execute();
+
+            $course = $query->fetch(PDO::FETCH_ASSOC);
             break;
     }
 }
