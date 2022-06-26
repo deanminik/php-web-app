@@ -23,9 +23,9 @@
                                     <input type="text" class="form-control" name="course_name" id="course_name" aria-describedby="helpId" placeholder="Name of the course">
                                 </div>
                                 <div class="btn-group" role="group" aria-label="">
-                                    <button type="button" class="btn btn-success">Add</button>
-                                    <button type="button" class="btn btn-warning">Edit</button>
-                                    <button type="button" class="btn btn-danger">Delete</button>
+                                    <button type="submit" name="action" value="add" class="btn btn-success">Add</button>
+                                    <button type="submit" name="action" value="edit" class="btn btn-warning">Edit</button>
+                                    <button type="submit" name="action" value="delete" class="btn btn-danger">Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -42,12 +42,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td scope="row">1</td>
-                                <td>Web site with php</td>
-                                <td>Select</td>
-                            </tr>
-                            <tr>
+                            <?php foreach ($coursesList as $course) { ?>
+                                <tr>
+                                    <td><?php echo $course['id']; ?></td>
+                                    <td><?php echo $course['course_name']; ?></td>
+                                    <td>Select</td>
+                                </tr>
+                                <tr>
+                                <?php } ?>
                         </tbody>
                     </table>
                 </div>
