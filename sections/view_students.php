@@ -30,9 +30,18 @@
                                 <div class="mb-3">
                                     <label for="" class="form-label">Courses</label>
                                     <select multiple class="form-control" name="courses[]" id="coursesList">
-                                        <option>Select an option</option>
+
                                         <?php foreach ($courses as $course) { ?>
-                                            <option value="<?php echo $course['id']; ?>"><?php echo $course['id']; ?><?php echo $course['course_name']; ?></option>
+                                            <option <?php
+                                                    if (!empty($coursesArray)) :
+                                                        if (in_array($course['id'], $coursesArray)) :
+                                                            echo 'select';
+                                                        endif;
+                                                    endif;
+                                                    ?> value="<?php echo $course['id']; ?>">
+                                                <?php echo $course['id']; ?>
+                                                <?php echo $course['course_name']; ?>
+                                            </option>
 
                                         <?php } ?>
                                     </select>
@@ -78,6 +87,7 @@
                                         <form action="" method="POST">
                                             <input type="hidden" name="id" id="id" value="<?php echo $student['id']; ?>" />
                                             <input type="hidden" name="name" id="name" value="<?php echo $student['name']; ?>" />
+                                         
                                             <input type="submit" name="action" value="Select" class="btn btn-info">
                                         </form>
                                     </td>

@@ -50,6 +50,28 @@ if ($action != '') {
             // $id = $student['id'];
             $name = $student['name'];
             $Lastname = $student['Lastname'];
+
+            //Select of the courses
+            /**
+             * 1- we select the id of table course_student (this the table with relationship)
+             * 2- Then we add it with courses
+             * 3- course, the id, will be equal to course_student table, the id_course
+             * 4- when, course_student table, id_student will be equal to id_student" 
+             */
+            $sql = "SELECT courses.id FROM course_student INNER JOIN courses ON courses.id = course_student.id_course
+            WHERE course_student.id_student=:id_student";
+            $query = $bdconnectionBD->prepare($sql);
+            $query->bindParam(':id_student', $id);
+            $query->execute();
+            $coursesOfStudent = $query->fetchAll(PDO::FETCH_ASSOC);
+            print_r($coursesOfStudent);
+
+            foreach ($coursesOfStudent as $course) {
+
+                // echo $course['id'];
+                $coursesArray[] = $course['id']; // we add all courses in a list 
+
+            }
             break;
     }
 }
