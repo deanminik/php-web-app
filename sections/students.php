@@ -73,6 +73,39 @@ if ($action != '') {
 
             }
             break;
+
+        case 'delete':
+            $sql = "DELETE FROM students WHERE id=:id";
+            $query = $bdconnectionBD->prepare($sql);
+            $query->bindParam(':id', $id);
+            $query->execute();
+            //all date related with another table as a realtionship will be deleted because our database we are using CASCADE
+            break;
+
+        case 'edit':
+            $sql = "UPDATE students SET name=:name, Lastname=:Lastname WHERE id=:id";
+            $query = $bdconnectionBD->prepare($sql);
+            $query->bindParam(':name', $name);
+            $query->bindParam(':Lastname', $Lastname);
+            $query->bindParam(':id', $id);
+            $query->execute();
+
+            if (isset($courses)) {
+                $sql = "DELETE FROM course_student WHERE id_student=:id_student";
+                $query = $bdconnectionBD->prepare($sql);
+                $query->bindParam(':id_student', $id);
+                $query->execute();
+
+                foreach ($courses as $course) {
+                    $sql = "INSERT INTO course_student (id, id_student, id_course) VALUES (NULL,:id_student,:id_course)";
+                    $query = $bdconnectionBD->prepare($sql);
+                    $query->bindParam(':id_student', $id); 
+                    $query->bindParam(':id_course', $course);
+                    $query->execute();
+                }
+
+                $coursesArray = $courses;
+            }
     }
 }
 
