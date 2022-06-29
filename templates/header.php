@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location:../index.php');
+}
+?>
+
+
 <!-- bs5-$  -->
 <!doctype html>
 <html lang="en">
@@ -19,6 +27,6 @@
             <a class="nav-item nav-link active" href="index.php">Home <span class="visually-hidden">(current)</span></a>
             <a class="nav-item nav-link" href="view_students.php">Students</a>
             <a class="nav-item nav-link" href="view_courses.php">Courses</a>
-            <a class="nav-item nav-link" href="#">Sign out</a>
+            <a class="nav-item nav-link" href="close.php">Sign out</a>
         </div>
     </nav>

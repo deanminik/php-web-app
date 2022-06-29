@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+if ($_POST) { //Is there a sending? Yes, ok do this
+
+    if ($_POST['user'] == 'admin' && $_POST['password'] == 'admin') {
+        $_SESSION['user'] = $_POST['user'];
+        echo "Login successful";
+        header('Location: sections/index.php'); // redirect to this view 
+    } else {
+        $message = "Incorrect user";
+    }
+}
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -16,13 +33,21 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <form action="sections/index.php" method="POST">
-                    <div class="col-md-4">
+                <!-- <form action="sections/index.php" method="POST"> -->
+                <form action="" method="POST">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 Sign in
                             </div>
                             <div class="card-body">
+                                <?php
+                                if (isset($message)) {
+                                    // Is message has something, then print this
+                                    echo $message;
+                                }
+
+                                ?>
                                 <br>
                                 <div class="mb-3">
                                     <label for="" class="form-label">User</label>
