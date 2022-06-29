@@ -78,7 +78,9 @@
                                         <!-- <?php print_r($student["courses"]) ?> -->
                                         <?php
                                         foreach ($student["courses"] as $course) {
-                                            echo '<a href="#">' . $course['course_name'] . '</a><br>';
+                                            echo '<a href="certification.php?idcourse=' . $course['id'] . '&idstudent=' . $student['id'] . '">' . $course['course_name'] . '</a><br>';
+                                            // example, when you click to a course  
+                                            // http://localhost/app/sections/certification.php?idcourse=1&idstudent=2 
                                         }
                                         ?>
                                     </td>
@@ -87,7 +89,7 @@
                                         <form action="" method="POST">
                                             <input type="hidden" name="id" id="id" value="<?php echo $student['id']; ?>" />
                                             <input type="hidden" name="name" id="name" value="<?php echo $student['name']; ?>" />
-                                         
+
                                             <input type="submit" name="action" value="Select" class="btn btn-info">
                                         </form>
                                     </td>

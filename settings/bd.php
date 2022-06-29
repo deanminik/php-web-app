@@ -13,7 +13,7 @@ class BD
 
             $options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;//this is to print errors 
             self::$instance = new PDO('mysql:host=localhost;dbname=application', 'root', '', $options);
-            echo "connected";
+            // echo "connected";
         }
         return self::$instance;
     }
